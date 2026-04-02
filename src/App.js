@@ -5,7 +5,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("/api/message")
+    fetch(`${process.env.REACT_APP_API_URL}/api/message`)
       .then((res) => res.json())
       .then((data) => setMessage(data.message))
       .catch((err) => console.error(err));
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Mobile Version</h1>
+        <h1>New {window.innerWidth <= 768 ? "Mobile Version" : "Desktop Version"}</h1>
         <p>{message || "Loading message..."}</p>
       </header>
     </div>
